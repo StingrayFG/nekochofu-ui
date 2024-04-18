@@ -40,10 +40,11 @@ export class HomePageComponent {
     if (this.contentsControl.status === 'VALID') {
       if (this.contentsControl.value !== this.lastOriginalValue) {
         this.newLink = '...'
-        await axios.post('http://localhost:8000/record/create', {contents: this.contentsControl.value})
+        await axios.post('http://localhost:8000/record/add', {contents: this.contentsControl.value})
         .then(res => {
-          this.newLink = 'localhost:4200' + '/' + res.data;
+          this.newLink = 'localhost:4200' + '/' + res.data.uuid;
           this.lastOriginalValue = this.contentsControl.value!;
+          console.log(res)
         })
         .catch(err => {
           this.newLink = '';
