@@ -4,10 +4,13 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import axios from 'axios';
 
+import { LineElementComponent } from '@app/components/elements/lineElement/lineElement.component';
+
 @Component({
   selector: 'app-page',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule, CdkTextareaAutosize],
+  imports: [RouterOutlet, ReactiveFormsModule, CdkTextareaAutosize, 
+    LineElementComponent],
   templateUrl: './homePage.component.html',
   styleUrl: './homePage.component.scss'
 })
@@ -44,7 +47,7 @@ export class HomePageComponent {
         .then(res => {
           this.newLink = 'localhost:4200' + '/' + res.data.uuid;
           this.lastOriginalValue = this.contentsControl.value!;
-          console.log(res)
+          console.log(res.data)
         })
         .catch(err => {
           this.newLink = '';
