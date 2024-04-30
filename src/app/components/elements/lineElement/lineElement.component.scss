@@ -1,0 +1,77 @@
+.div-line {
+  width: 100%;
+  height: 1.6rem;
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
+
+.div-line-number {
+  height: 1.6rem;
+}
+
+.p-line-number {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+
+  background-color: rgba(127, 127, 127, 1);
+
+  text-align: right;
+  line-height: 1.6rem;
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: 500;
+}
+
+.div-line-contents {
+  width: 100%;
+  height: 100%;
+}
+
+.p-line-contents {
+  width: 100%;
+  height: 1.6rem;
+  margin: 0;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+
+  background-color: rgba(255, 255, 255, 0);
+
+  line-height: 1.6rem;
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: 500;
+  color: rgba(63, 63, 63, 1);
+
+  box-sizing: border-box;  
+}
+
+.p-h1 {
+  color: rgba(0, 0, 0, 1);
+}
+
+.p-h2 {
+  color: rgba(0, 0, 0, 1);
+}
+
+.p-h3 {
+  color: rgba(0, 0, 0, 1);
+}
+
+.p-bold {
+  color: rgba(31, 31, 31, 1);
+}
+
+.p-italic {
+  font-style: italic;
+}
+
+.p-strike {
+  text-decoration: line-through;
+}
+
+
+

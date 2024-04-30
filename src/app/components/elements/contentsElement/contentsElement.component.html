@@ -1,0 +1,10 @@
+<div class='div-contents'>
+  <div class='div-contents-input'>
+    <textarea class='textarea-input' [(ngModel)]='contentsString' (ngModelChange)='handleContentsChange($event)' matInput cdkTextareaAutosize cdkAutosizeMinRows='1'></textarea>
+  </div>
+  <div class='div-contents-lines'>
+    @for (line of contentsArray; track line; let index=$index) {
+      <app-line-element [value]='line' [number]='index'></app-line-element>
+    }
+  </div>
+</div>

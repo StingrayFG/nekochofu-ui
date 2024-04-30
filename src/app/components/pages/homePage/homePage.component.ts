@@ -1,28 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import axios from 'axios';
 
-import { LineElementComponent } from '@app/components/elements/lineElement/lineElement.component';
+import { ContentsElementComponent } from '@app/components/elements/contentsElement/contentsElement.component';
 
 @Component({
   selector: 'app-page',
   standalone: true,
   imports: [RouterOutlet, ReactiveFormsModule, CdkTextareaAutosize, 
-    LineElementComponent],
+    ContentsElementComponent],
   templateUrl: './homePage.component.html',
   styleUrl: './homePage.component.scss'
 })
 
 export class HomePageComponent {
-  lastOriginalValue = '';
-  newLink = '';
+  lastCreatedContents: string = '';
+  currentContents: string = '';
+  newLink: string = '';
   
-  showingMessage = false;
-  message = ''
-
-  contentsControl = new FormControl()
+  showingMessage: boolean = false;
+  message: string = '';
 
   copyLink(): void {
     if (this.newLink) {
@@ -38,24 +37,22 @@ export class HomePageComponent {
     this.showingMessage = false;
   }
 
+  @ViewChild(ContentsElementComponent, {static : true}) child : ContentsElementComponent = {} as ContentsElementComponent;
+
   async createRecord() {
-    console.log(this.contentsControl.value)
-    if (this.contentsControl.status === 'VALID') {
-      if (this.contentsControl.value !== this.lastOriginalValue) {
+      this.currentContents = this.child.getContentsString();
+      console.log(this.currentContents)
+      if (this.lastCreatedContents !== this.currentContents) {
         this.newLink = '...'
-        await axios.post('http://localhost:8000/record/add', {contents: this.contentsControl.value})
+        await axios.post('http://localhost:8000/record/add', {contents: this.currentContents})
         .then(res => {
           this.newLink = 'localhost:4200' + '/' + res.data.uuid;
-          this.lastOriginalValue = this.contentsControl.value!;
-          console.log(res.data)
+          this.lastCreatedContents = this.currentContents;
         })
         .catch(err => {
           this.newLink = '';
           this.showMessage('Something went wrong');
         })
       }
-    } else {
-      this.showMessage('Enter a correct link');
-    }
   }
 }
