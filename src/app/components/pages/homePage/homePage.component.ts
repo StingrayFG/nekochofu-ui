@@ -7,7 +7,7 @@ import axios from 'axios';
 import { ContentsElementComponent } from '@app/components/elements/contentsElement/contentsElement.component';
 
 @Component({
-  selector: 'app-page',
+  selector: 'home-page',
   standalone: true,
   imports: [RouterOutlet, ReactiveFormsModule, CdkTextareaAutosize, 
     ContentsElementComponent],

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { FormsModule } from '@angular/forms';
 
@@ -13,13 +13,19 @@ import { LineElementComponent } from '@components/elements/lineElement/lineEleme
 })
 
 export class ContentsElementComponent {
-  
-  linesExample = ['123', '43242', '2311']
+
+  @Input() readonlyMode: boolean = false;
+
   contentsString: string = '';
   contentsArray: string[] = [''];
 
   getContentsString(): string {
     return this.contentsString;
+  }
+
+  setContentsString(contents: string): void {
+    this.contentsString = contents;
+    this.contentsArray = contents.split(/\r?\n/);
   }
 
   handleContentsChange(event: any): any {
