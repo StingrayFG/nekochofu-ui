@@ -1,12 +1,12 @@
 <div class='div-contents'>
   <div class='div-contents-input'>
-      @if (!readonlyMode) { 
-        <textarea class='textarea-input' [(ngModel)]='contentsString' (ngModelChange)='handleContentsChange($event)' matInput cdkTextareaAutosize cdkAutosizeMinRows='1'></textarea>
-      } 
+    @if (!readonlyMode) { 
+      <textarea class='textarea-input' [(ngModel)]='contentsString' (ngModelChange)='handleContentsChange($event)' matInput cdkTextareaAutosize cdkAutosizeMinRows='1'></textarea>
+    }
   </div>
   <div class='div-contents-lines'>
     @for (line of contentsArray; track line; let index=$index) {
-      <app-line-element [value]='line' [number]='index'></app-line-element>
+      <app-line-element [value]='line' [number]='index' [readonlyMode]='readonlyMode'></app-line-element>
     }
   </div>
 </div>

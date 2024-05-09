@@ -22,7 +22,7 @@
   text-align: right;
   line-height: 1.6rem;
   font-size: 16px;
-  font-family: Arial;
+  font-family: monospace;
   font-weight: 500;
 }
 
@@ -42,27 +42,30 @@
 
   line-height: 1.6rem;
   font-size: 16px;
-  font-family: Arial;
-  font-weight: 500;
-  color: rgba(63, 63, 63, 1);
+  font-family: monospace;
+  font-weight: 400;
+  color: rgba(31, 31, 31, 1);
 
   box-sizing: border-box;  
 }
 
 .p-h1 {
   color: rgba(0, 0, 0, 1);
+  font-weight: 900;
 }
 
 .p-h2 {
   color: rgba(0, 0, 0, 1);
+  font-weight: 800;
 }
 
 .p-h3 {
   color: rgba(0, 0, 0, 1);
+  font-weight: 700;
 }
 
 .p-bold {
-  color: rgba(31, 31, 31, 1);
+  font-weight: 500;
 }
 
 .p-italic {

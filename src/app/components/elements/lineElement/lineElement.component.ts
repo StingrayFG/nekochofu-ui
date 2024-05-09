@@ -9,8 +9,11 @@ import { Component, Input } from '@angular/core';
 
 export class LineElementComponent {
 
+  @Input() readonlyMode: boolean = false;
+
   @Input() number: number = 0;
   @Input() value: string = '';
+  markerlessValue: string = '';
   styleMarker: string = '';
   styleArray: string[] = [];
 
@@ -20,6 +23,7 @@ export class LineElementComponent {
 
   handleStyle(): void {
     this.styleMarker = this.value.substring(0, this.value.indexOf(' '));
+    this.markerlessValue = this.value.substring(this.value.indexOf(' ') + 1, this.value.length);
 
     if (this.styleMarker.includes('###')) {
       this.styleArray.push('p-h3');

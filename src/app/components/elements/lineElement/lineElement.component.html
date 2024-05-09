@@ -6,7 +6,11 @@
   </div>
   <div class='div-line-contents'>
     <p class='p-line-contents' [class]='styleArray'>
-      {{value}}
+      @if (!readonlyMode) { 
+        {{value}}
+      } @else {
+        {{markerlessValue}}
+      }
     </p>
   </div>
 </div>
