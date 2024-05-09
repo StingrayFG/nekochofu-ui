@@ -2,6 +2,8 @@
   <div class='div-contents-input'>
     @if (!readonlyMode) { 
       <textarea class='textarea-input' [(ngModel)]='contentsString' (ngModelChange)='handleContentsChange($event)' matInput cdkTextareaAutosize cdkAutosizeMinRows='1'></textarea>
+    } @else {
+      <textarea class='textarea-input' [readonly]='true' [value]='markerlessContentsString' matInput cdkTextareaAutosize cdkAutosizeMinRows='1'></textarea>
     }
   </div>
   <div class='div-contents-lines'>
