@@ -5,6 +5,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import axios from 'axios';
 
 import { ContentsElementComponent } from '@app/components/elements/contentsElement/contentsElement.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'home-page',
@@ -44,7 +45,7 @@ export class HomePageComponent {
       console.log(this.currentContents)
       if (this.lastCreatedContents !== this.currentContents) {
         this.newLink = '...'
-        await axios.post('http://localhost:8000/record/add', {contents: this.currentContents})
+        await axios.post(environment.backendUrl + '/record/add', {contents: this.currentContents})
         .then(res => {
           this.newLink = 'localhost:4200' + '/' + res.data.uuid;
           this.lastCreatedContents = this.currentContents;
